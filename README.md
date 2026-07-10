@@ -1,16 +1,44 @@
-# React + Vite
+# OrderManagementFrontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React dashboard for OrderManagementAPI, a simple interface for managing products, customers, and orders.
 
-Currently, two official plugins are available:
+Demo: https://order-management-frontend-tan.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## About the project
 
-## React Compiler
+Frontend built to consume [OrderManagementAPI](https://github.com/Vitormjere/OrderManagementAPI), a REST API for order management. Lets you register products and customers, and create orders by picking a customer and adding multiple items, the total is calculated automatically based on data returned by the API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+- React (Vite)
+- React Router for navigation
+- Fetch API for HTTP requests
+- Plain CSS (no framework)
+- Deployed on Vercel with automatic deploys on push
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- Full CRUD for Products and Customers
+- Order creation with dynamic item list (add/remove products before submitting)
+- Order status shown as color-coded badges
+- Low stock warning on the products table
+- Sidebar navigation between pages
+
+## Running locally
+
+```bash
+git clone https://github.com/Vitormjere/OrderManagementFrontend.git
+cd OrderManagementFrontend
+npm install
+npm run dev
+```
+
+By default, the app points to the production API. To use a local backend instead, update `API_BASE_URL` in `src/services/api.js`.
+
+## Related project
+
+Backend API: [OrderManagementAPI](https://github.com/Vitormjere/OrderManagementAPI)
+
+## Author
+
+Vitor Miranda Jeremias — [GitHub](https://github.com/Vitormjere)
