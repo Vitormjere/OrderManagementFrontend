@@ -30,3 +30,34 @@ export async function deleteProduct(id) {
     throw new Error("Erro ao deletar produto");
   }
 }
+
+export async function getCustomers() {
+  const response = await fetch(`${API_BASE_URL}/customers`);
+  if (!response.ok) {
+    throw new Error("Erro ao buscar clientes");
+  }
+  return response.json();
+}
+
+export async function createCustomer(customer) {
+  const response = await fetch(`${API_BASE_URL}/customers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(customer),
+  });
+  if (!response.ok) {
+    throw new Error("Erro ao criar cliente");
+  }
+  return response.json();
+}
+
+export async function deleteCustomer(id) {
+  const response = await fetch(`${API_BASE_URL}/customers/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Erro ao deletar cliente");
+  }
+}
