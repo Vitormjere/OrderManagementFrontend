@@ -47,61 +47,88 @@ function ProductsPage() {
 
   return (
     <div>
-      <h1>Produtos</h1>
+      <div className="page-header">
+        <h1>Produtos</h1>
+        <p>Catálogo e controle de estoque</p>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nome"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Descrição"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Preço"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Estoque"
-          value={stockQuantity}
-          onChange={(e) => setStockQuantity(e.target.value)}
-          required
-        />
-        <button type="submit">Criar Produto</button>
-      </form>
+      <div className="card">
+        <h2>Novo produto</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-row">
+            <div className="field">
+              <label>Nome</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="field">
+              <label>Descrição</label>
+              <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label>Preço</label>
+              <input
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                required
+              />
+            </div>
+            <div className="field">
+              <label>Estoque</label>
+              <input
+                type="number"
+                value={stockQuantity}
+                onChange={(e) => setStockQuantity(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" className="btn-primary">Criar produto</button>
+        </form>
+      </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Estoque</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map(product => (
-            <tr key={product.id}>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
-              <td>{product.stockQuantity}</td>
-              <td>
-                <button onClick={() => handleDelete(product.id)}>Excluir</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="card">
+        <h2>Catálogo ({products.length})</h2>
+        {products.length === 0 ? (
+          <p className="empty-state">Nenhum produto cadastrado ainda.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th className="mono">Preço</th>
+                <th className="mono">Estoque</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(product => (
+                <tr key={product.id}>
+                  <td>{product.name}</td>
+                  <td className="mono">R$ {product.price.toFixed(2)}</td>
+                  <td className={`mono ${product.stockQuantity <= 5 ? 'stock-low' : ''}`}>
+                    {product.stockQuantity}
+                  </td>
+                  <td>
+                    <button className="btn-danger" onClick={() => handleDelete(product.id)}>
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   )
 }
