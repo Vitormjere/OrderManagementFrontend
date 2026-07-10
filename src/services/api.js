@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://localhost:7288/api";
+const API_BASE_URL = "https://ordermanagement-api-vitor-fpcphmf5ejaretc0.brazilsouth-01.azurewebsites.net/api";
 
 export async function getProducts() {
   const response = await fetch(`${API_BASE_URL}/products`);
