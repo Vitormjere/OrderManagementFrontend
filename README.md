@@ -39,6 +39,11 @@ By default, the app points to the production API. To use a local backend instead
 
 Backend API: [OrderManagementAPI](https://github.com/Vitormjere/OrderManagementAPI)
 
+## Technical Documentation
+
+A complete technical write-up (architecture decisions, code walkthroughs, and real debugging challenges) is available here:
+[EventReservation_Documentacao.pdf](./docs/OrderManagement_Documentacao.pdf)
+
 ## Author
 
 Vitor Miranda Jeremias — [GitHub](https://github.com/Vitormjere)
